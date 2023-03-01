@@ -4,7 +4,7 @@ export const run = (input) => {
   try {
     // Input will be a string of JSON representing your payload
     // Convert into an object so that we can manipulate the data
-    let msg = JSON.parse(input)
+    const msg = JSON.parse(input)
 
     // Example: A field in your collection was of type integer,
     // but is now a type of string. Let's convert it back to an
