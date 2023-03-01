@@ -1,9 +1,23 @@
 import { log } from "@suborbital/runnable";
 
 export const run = (input) => {
-  let message = "Hello, " + input;
+  try {
+    // Input will be a string of JSON representing your payload
+    // Convert into an object so that we can manipulate the data
+    let msg = JSON.parse(input)
 
-  log.info(message);
+    // Example: A field in your collection was of type integer,
+    // but is now a type of string. Let's convert it back to an
+    // integer so that it matches your collections schema
+    //
+    // msg.my_field = parseInt(msg.my_field)
 
-  return message;
+    // Turn your modified payload back into a string and return
+    return JSON.stringify(msg);
+  } catch (error) {
+    log.error(error);
+
+    // Return unmodified input on failure
+    return input
+  }
 };
